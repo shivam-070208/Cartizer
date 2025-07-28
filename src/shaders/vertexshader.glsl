@@ -6,8 +6,8 @@ void main() {
   vUv = uv;
 
   vec3 newPosition = position;
-   if (abs(vUv.y ) > 0.4) {
-    newPosition.yz += sin((position.y + position.x) * 100.0 + sin(uTime) * 10.0)*0.2;
+   if (abs(vUv.y ) > 0.2) {
+    newPosition.z += sin((position.y + position.x) * 100.0 + sin(uTime) * 10.0)*0.5;
 	
   }
 

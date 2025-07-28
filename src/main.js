@@ -8,14 +8,24 @@ gsap.registerPlugin(ScrollTrigger);
 let uTime = {
   value:0
 }
+const getscrolloptions = (id=new String())=>{
+  return( {
+    trigger: id,
+    start: 'top top',
+    end: 'bottom 100vh',
+    scroller: '.main',
+    scrub: 2,
+  })
+}
 const setShader =()=>{
-
-['Rideau','Rideau001','Rideau002','Rideau003' ,'Rideau004','Rideau005'].map((value)=>{
-  const uTexture = Canvas.child[value].material.map;
+let uTexture;
+['Rideau','Rideau001','Rideau002','Rideau003' ,'Rideau004','Rideau005','Interaction_Raycaster'].map((value)=>{
+   uTexture =uTexture?? Canvas.child[value].material.map;
  Canvas.child[value].material = new THREE.ShaderMaterial({
   
   vertexShader,
   fragmentShader,
+
   uniforms: {
     uTime,
     uTexture: { value: uTexture }
@@ -23,13 +33,16 @@ const setShader =()=>{
 });
 })
 gsap.to(uTime,{
-  value:2*Math.PI,
+  value:Math.PI,
   duration:10,
-  repeat:-1
+  repeat:-1,
+  ease:'linear'
+
 })
+// rang01A
 }
 const setStarAnimation = () => {
-   console.log(Canvas.Object.particles)
+   
   gsap.to(Canvas.Object.particles.position, {
     
     z:1,
@@ -40,21 +53,9 @@ const setStarAnimation = () => {
     
   });
 };
-
-
-const setAnimation = () => {
-  
-  
-  setShader();
-  setStarAnimation()
+const setRoom1Animation = ()=>{
 const room1Timeline = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.room1',
-    start: 'top top',
-    end: 'bottom 100vh',
-    scroller: '.main',
-    scrub: 2,
-  }
+  scrollTrigger:getscrolloptions('.room1')
 });
 room1Timeline.to(Canvas.Object.Text.material, {
   opacity: 0.0,
@@ -67,11 +68,37 @@ room1Timeline.to(Canvas.Object.Text.material, {
   }, 0.12);
 }
 )
+
 room1Timeline.to(Canvas.camera.position, {
   z: 9,
   
 }, 0.32);
+room1Timeline.from(Canvas.child['CTRL_ROOM_01_Tunnel'].rotation, {
+  z:0.23
+}, 0.54);
 
+
+
+}
+const setRoom2Animation = ()=>{
+  const room2timeline = gsap.timeline({scrollTrigger:getscrolloptions('.room2')});
+
+  room2timeline.to(Canvas.child['Interaction_Raycaster'].position,{
+    y:50
+  })
+  room2timeline.to(Canvas.camera.position,{
+    z:-35
+  },0.4);
+  console.log(Canvas.child)
+}
+
+const setAnimation = () => {
+  
+  
+  setShader();
+  setStarAnimation();
+  setRoom1Animation();
+  setRoom2Animation();
 
 }
 
@@ -80,7 +107,7 @@ room1Timeline.to(Canvas.camera.position, {
 Canvas.setAmbientLight();
 Canvas.createParticles(900);
 Canvas.loadModel("scenes.glb",'scene',setAnimation);
-
+// Canvas.orbitcontrols()
 const font = new FontFace(
   "Playfair Display",
   'url(/font.ttf)'

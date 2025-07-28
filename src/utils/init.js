@@ -9,7 +9,7 @@ class Init {
       62,
       window.innerWidth / window.innerHeight,
       0.1,
-      80
+    100
     );
     this.camera.position.z = 44;
 
@@ -39,7 +39,7 @@ class Init {
   }
 setAmbientLight() {
   // Ambient Light
-this.light.AmbientLight = new THREE.AmbientLight('#F1E8DD', 4.0);
+this.light.AmbientLight = new THREE.AmbientLight('#F1E8DD', 2.0);
 
 this.scene.add(
   this.light.AmbientLight
@@ -54,8 +54,7 @@ this.scene.add(
       modelPath,
       (gltf) => {
          gltf.scene.traverse((child) => {
-            child.castShadow = true
-          
+            
                 this.child[child.name] = child;
             
       });
