@@ -14,7 +14,7 @@ const getscrolloptions = (id=new String())=>{
     start: 'top top',
     end: 'bottom 100vh',
     scroller: '.main',
-    scrub: 2,
+    scrub: 1,
   })
 }
 const setShader =()=>{
@@ -91,6 +91,27 @@ const setRoom2Animation = ()=>{
   },0.4);
   console.log(Canvas.child)
 }
+const setArchAnimation = (timeline = gsap.timeline())=>{
+  Array(5).fill('').map((_,i)=>{
+    console.log(Canvas.child[`Arche_${i+1}`],10)
+    timeline.to(Canvas.child[`Arche_${i+1}`].rotation,{
+      y:Math.PI
+    },0.13*i)
+  })
+}
+const setRoom3Animation = ()=>{
+  const room3timeline = gsap.timeline({
+    scrollTrigger:getscrolloptions('.room3')
+  })
+    room3timeline.to(Canvas.child['rang03B'].position,{
+    y:3
+  },0)
+  room3timeline.to(Canvas.camera.position,{
+    z:-73
+  },0.12);
+  setArchAnimation(room3timeline)
+
+}
 
 const setAnimation = () => {
   
@@ -99,6 +120,7 @@ const setAnimation = () => {
   setStarAnimation();
   setRoom1Animation();
   setRoom2Animation();
+  setRoom3Animation();
 
 }
 
