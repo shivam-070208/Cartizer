@@ -3,7 +3,12 @@ import fragmentShader from './shaders/fragementShader.glsl';
 import vertexShader from './shaders/vertexshader.glsl'
 import gsap from "gsap";
 import { Canvas } from "./utils/init";
+
 import { ScrollTrigger } from "gsap/all";
+
+
+
+
 gsap.registerPlugin(ScrollTrigger);
 let uTime = {
   value:0
@@ -112,6 +117,22 @@ const setRoom3Animation = ()=>{
   setArchAnimation(room3timeline)
 
 }
+const setRoom4Animation =()=>{
+const room4timeline = gsap.timeline({scrollTrigger:getscrolloptions('.room4')});
+
+  
+  room4timeline.to(Canvas.camera.position,{
+    z:-110,
+    y:9,
+    x:14
+  },0);
+    room4timeline.to(Canvas.camera.position,{
+    z:-140,
+    y:0,
+    x:0
+  },0.4);
+  
+}
 
 const setAnimation = () => {
   
@@ -121,6 +142,7 @@ const setAnimation = () => {
   setRoom1Animation();
   setRoom2Animation();
   setRoom3Animation();
+  setRoom4Animation();
 
 }
 

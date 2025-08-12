@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="./src/app.css">
-  </head>
-  <body class="m-0 p-0 overflow-hidden">
-    <div class="w-screen main h-screen overflow-x-hidden  overflow-y-scroll   ">
-      <div id="app" class="w-screen room1 h-screen sticky  pointer-events-none    snap-start top-0 left-0"></div>
-      <div class="w-screen h-screen room2  snap-start ">
-      
-      </div>
-         <div class="w-screen h-screen room3  snap-start ">
-           
-        </div>
-        <div class="w-screen h-screen bg-red-600 snap-start ">
-    
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <link rel="stylesheet" href="./src/app.css">
+</head>
+
+<body class="m-0 p-0  overflow-hidden">
+  <div scroll-container class="w-screen main h-screen overflow-x-hidden  overflow-y-scroll   ">
+    <div id="app" class="w-screen room1 h-screen sticky  pointer-events-none    snap-end top-0 left-0"></div>
+    <div class="w-screen h-screen room2  snap-end ">
+    </div>
+    <div class="w-screen h-screen room3  snap-end "></div>
+    <div class="w-screen h-screen room4 bg-red-600 snap-end "></div>
+       <div class="w-screen h-screen room5 bg-red-600 snap-end ">
+
     </div>
     <script type="module" src="/src/main.js"></script>
-  </body>
+</body>
+
 </html>

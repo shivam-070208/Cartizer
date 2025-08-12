@@ -39,7 +39,7 @@ class Init {
   }
 setAmbientLight() {
   // Ambient Light
-this.light.AmbientLight = new THREE.AmbientLight('#F1E8DD', 2.0);
+this.light.AmbientLight = new THREE.AmbientLight('#F2D7BB', 4.5);
 
 this.scene.add(
   this.light.AmbientLight
