@@ -44,7 +44,7 @@ gsap.to(uTime,{
   ease:'linear'
 
 })
-// rang01A
+
 }
 const setStarAnimation = () => {
    
